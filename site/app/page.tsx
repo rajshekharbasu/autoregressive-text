@@ -111,11 +111,15 @@ export default function Home() {
         {/* ---- header ---- */}
         <header className="enter" style={{ "--i": i() } as CSSProperties}>
           <div className="eyebrow">
+            <a
+              href="https://www.rajshekhar.me/index.html"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              rajshekharbasu
+            </a>
+            <span className="sep">/</span>
             <span>npm</span>
-            <span className="sep">/</span>
-            <span>react</span>
-            <span className="sep">/</span>
-            <span>framer-motion</span>
             <span className="sep">/</span>
             <span>v0.1.2</span>
           </div>

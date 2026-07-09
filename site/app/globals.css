@@ -163,6 +163,14 @@ body {
 .eyebrow .sep {
   color: var(--hairline-strong);
 }
+.eyebrow a {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s var(--ease);
+}
+.eyebrow a:hover {
+  color: var(--ink);
+}
 
 h1.title {
   margin: 6px 0 0;
