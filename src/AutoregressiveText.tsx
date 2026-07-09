@@ -207,6 +207,8 @@ export interface AutoregressiveTextProps {
   loop?: boolean;
   /** Color theme. `"system"` (default) follows the OS preference. */
   theme?: "light" | "dark" | "system";
+  /** Scale multiplier for the floating "thinking" candidate panel. `1` = default size. */
+  panelScale?: number;
   /** Root styling / layout hook. */
   className?: string;
   /** Fires once the full sentence has been generated. */
@@ -233,6 +235,7 @@ export default function AutoregressiveText({
   paused = false,
   loop = false,
   theme = "system",
+  panelScale = 1,
   className,
   onComplete,
 }: AutoregressiveTextProps) {
@@ -318,7 +321,9 @@ export default function AutoregressiveText({
       const t = toEl.getBoundingClientRect();
       const ex = t.left - wrap.left + t.width / 2;
       const eTop = t.top - wrap.top;
-      const apex = Math.min(cTop, eTop) - (20 + j * 10);
+      // Rise above the words proportionally to the font size (tuned so the
+      // default 24px font keeps the original ~20px + 10px-per-row spacing).
+      const apex = Math.min(cTop, eTop) - fontSize * (0.83 + j * 0.42);
       const d = `M ${cx.toFixed(1)} ${cTop.toFixed(1)} L ${cx.toFixed(1)} ${apex.toFixed(
         1
       )} L ${ex.toFixed(1)} ${apex.toFixed(1)} L ${ex.toFixed(1)} ${eTop.toFixed(1)}`;
@@ -335,7 +340,7 @@ export default function AutoregressiveText({
       setDrawn(false);
       requestAnimationFrame(() => requestAnimationFrame(() => setDrawn(true)));
     }
-  }, [bracket, resizeTick, revealed.length]);
+  }, [bracket, resizeTick, revealed.length, fontSize]);
 
   useEffect(() => {
     const el = svgWrapRef.current;
@@ -657,6 +662,8 @@ export default function AutoregressiveText({
                   fontFamily: MONO,
                   fontSize: "9px",
                   lineHeight: 1.4,
+                  transform: `scale(${panelScale})`,
+                  transformOrigin: "top left",
                   transition: "background-color 0.3s ease",
                 }}
               >

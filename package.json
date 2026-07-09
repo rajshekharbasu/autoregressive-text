@@ -1,6 +1,6 @@
 {
   "name": "autoregressive-text",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "description": "A self-contained React animation that generates text token-by-token like an autoregressive language model — candidate sampling, attention brackets, and a subtle reveal. Zero-config, themeable via CSS variables.",
   "keywords": [
     "react",
@@ -32,7 +32,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "files": [
     "dist",

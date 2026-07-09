@@ -50,6 +50,7 @@ That's it — no stylesheet import required.
 | `paused`             | `boolean`                           | `false`    | Pause playback.                                         |
 | `loop`               | `boolean`                           | `false`    | Restart the animation once it completes.                |
 | `theme`              | `"light" \| "dark" \| "system"`     | `"system"` | Color theme. `"system"` follows the OS preference.      |
+| `panelScale`         | `number`                            | `1`        | Scale multiplier for the floating "thinking" panel.     |
 | `className`          | `string`                            | —          | Extra class on the root element (for layout).           |
 | `onComplete`         | `() => void`                        | —          | Fires once the full sentence has been generated.        |
 
